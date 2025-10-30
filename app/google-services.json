@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "335927389524",
+    "project_id": "maketapp-25fa0",
+    "storage_bucket": "maketapp-25fa0.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:335927389524:android:914613bb098f83bd60ecc1",
+        "android_client_info": {
+          "package_name": "uqac.dim.market"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "335927389524-p3euivpnfrr4ledr33rjr8lk6ge8ggcb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "uqac.dim.market",
+            "certificate_hash": "3d6fbaeeea8119386e09e19e6129b3cbdb14cd73"
+          }
+        },
+        {
+          "client_id": "335927389524-1ofae73665jssmui0ebrjtr4bln1e8fn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnrAz56rqt3Wb16L60rEPnch5lYVYiEos"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "335927389524-1ofae73665jssmui0ebrjtr4bln1e8fn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

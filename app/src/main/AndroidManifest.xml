@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!--Permissions pour la gestion des images et acces camera -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32"
+        tools:ignore="SelectedPhotoAccess" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <!--Permission caméra pour prendre des photos -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+
+    <!--Permissions pour Firebase Cloud Messaging -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!--Recevoir les notifications -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <!--Permission pour afficher les notifications push -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@drawable/ic_app"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/ic_app"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Market"
+        tools:targetApi="31">
+
+        <!--singleTop évite de créer plusieurs instances -->
+        <activity
+            android:name=".activities.HomeActivity"
+            android:exported="false"
+            android:launchMode="singleTop" />
+
+        <activity android:name=".annonces.vehicules.PostVehiculeActivity" />
+        <activity android:name=".annonces.vehicules.DetailAnnonceActivity" />
+        <activity android:name=".gestionProfil.ProfilActivity" />
+        <activity android:name=".authentification.ModifierMDPActivityScreen" />
+
+        <!--Activité de chat permet aux utilisateurs de discuter -->
+        <!--exported=true car on peut y accéder depuis les notifications(notifs cliquables) -->
+        <activity
+            android:name=".conversations.ChatActivity"
+            android:exported="true"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".conversations.MesMessagesActivity" />
+        <activity android:name=".gestionAnnonces.MesAnnoncesActivity" />
+        <activity android:name=".gestionAnnonces.MesEnregistrementsActivity"
+            tools:ignore="Instantiatable" />
+        <activity android:name=".gestionProfil.ModifierMonProfilActivity" />
+        <activity android:name=".annonces.vehicules.ModifierAnnonceVehicule" />
+        <activity android:name=".annonces.autres.DetailAutreAnnonceActivity" />
+        <activity android:name=".annonces.autres.PostAutreAnnonceActivity" />
+        <activity android:name=".annonces.autres.ModifierAutreAnnonce" />
+        <activity android:name=".debugsTests.FCMDebugActivity" />
+
+        <!--Service qui gère la réception des notifications Firebase -->
+        <service
+            android:name=".services.MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <!--Activité de démarrage-->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Market">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <!--Intent filter pour ouvrir directement le chat depuis une notification -->
+            <intent-filter>
+                <action android:name="OPEN_CHAT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!--Provider pour partager des fichiers de façon sécurisée -->
+        <!--Nécessaire pour partager les photos prises avec la caméra -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+    </application>
+
+</manifest>
