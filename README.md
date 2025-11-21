@@ -23,4 +23,3 @@ Pour commencer, vous devez avoir Android Studio installé.
 1. Clonez le dépôt
 2. Ouvrez le projet dans Android Studio.
 3. Créez un fichier `google-services.json` dans le répertoire `app` et ajoutez la configuration de votre projet Firebase.
-4. Exécutez l'application
